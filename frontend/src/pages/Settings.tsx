@@ -190,7 +190,7 @@ export default function Settings() {
                 required
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="text-xs font-medium" htmlFor="newPw">New Password</label>
                 <input
@@ -296,10 +296,11 @@ export default function Settings() {
           )}
 
           {/* Table */}
-          <Table>
+          <div className="overflow-x-auto">
+          <Table className="min-w-[550px]">
             <TableHeader>
               <TableRow>
-                <TableHead className="w-40">Model</TableHead>
+                <TableHead className="w-32 md:w-40">Model</TableHead>
                 <TableHead className="text-right">1M Input (Cache Miss)</TableHead>
                 <TableHead className="text-right">1M Input (Cache Hit)</TableHead>
                 <TableHead className="text-right">1M Output</TableHead>
@@ -374,6 +375,7 @@ export default function Settings() {
               )}
             </TableBody>
           </Table>
+          </div>
         </CardContent>
       </Card>
     </div>

@@ -32,18 +32,18 @@ export default function Models() {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
         <Card>
-          <CardHeader><CardTitle className="text-sm">Models Used</CardTitle></CardHeader>
-          <CardContent><p className="text-3xl font-bold">{models.length}</p></CardContent>
+          <CardHeader className="p-3 md:p-4"><CardTitle className="text-xs md:text-sm">Models Used</CardTitle></CardHeader>
+          <CardContent className="p-3 pt-0 md:p-4 md:pt-0"><p className="text-xl md:text-3xl font-bold">{models.length}</p></CardContent>
         </Card>
         <Card>
-          <CardHeader><CardTitle className="text-sm">Total Cost</CardTitle></CardHeader>
-          <CardContent><p className="text-3xl font-bold">{(totalCost / 10000).toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 4 })}</p></CardContent>
+          <CardHeader className="p-3 md:p-4"><CardTitle className="text-xs md:text-sm">Total Cost</CardTitle></CardHeader>
+          <CardContent className="p-3 pt-0 md:p-4 md:pt-0"><p className="text-xl md:text-3xl font-bold truncate">{(totalCost / 10000).toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 4 })}</p></CardContent>
         </Card>
         <Card>
-          <CardHeader><CardTitle className="text-sm">Total Requests</CardTitle></CardHeader>
-          <CardContent><p className="text-3xl font-bold">{formatNumber(models.reduce((s, m) => s + m.requests, 0))}</p></CardContent>
+          <CardHeader className="p-3 md:p-4"><CardTitle className="text-xs md:text-sm">Total Requests</CardTitle></CardHeader>
+          <CardContent className="p-3 pt-0 md:p-4 md:pt-0"><p className="text-xl md:text-3xl font-bold">{formatNumber(models.reduce((s, m) => s + m.requests, 0))}</p></CardContent>
         </Card>
       </div>
 
@@ -52,8 +52,8 @@ export default function Models() {
           <CardTitle>Model Breakdown</CardTitle>
           <CardDescription>Per-model token usage and cost</CardDescription>
         </CardHeader>
-        <CardContent>
-          <Table>
+        <CardContent className="overflow-x-auto">
+          <Table className="min-w-[600px]">
             <TableHeader>
               <TableRow>
                 <TableHead>Model</TableHead>

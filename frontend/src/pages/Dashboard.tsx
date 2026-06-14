@@ -95,18 +95,18 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Summary cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
         {summaryCards.map((card) => (
           <Card key={card.label}>
-            <CardHeader className="pb-2">
+            <CardHeader className="p-3 pb-1 md:pb-2">
               <CardDescription className="flex items-center gap-1 text-xs">
-                <card.icon className="h-3 w-3" />
-                {card.label}
+                <card.icon className="h-3 w-3 shrink-0" />
+                <span className="truncate">{card.label}</span>
               </CardDescription>
-              <CardTitle className="text-xl">{card.value}</CardTitle>
+              <CardTitle className="text-base md:text-xl truncate">{card.value}</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-xs text-muted-foreground">{card.sub}</p>
+            <CardContent className="p-3 pt-0 md:pt-0">
+              <p className="text-xs text-muted-foreground line-clamp-1">{card.sub}</p>
             </CardContent>
           </Card>
         ))}
@@ -143,8 +143,8 @@ export default function Dashboard() {
           <CardTitle>Daily Cost by Model</CardTitle>
           <CardDescription>Stacked cost breakdown per day</CardDescription>
         </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={350}>
+        <CardContent className="overflow-x-auto">
+          <ResponsiveContainer width="100%" height={280} className="min-w-[500px] md:min-w-0">
             <BarChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
               <XAxis dataKey="date" tick={{ fontSize: 12 }} />
@@ -189,8 +189,8 @@ function DayTable({ title, days, metric }: { title: string; days: TopDaysRespons
       <CardHeader>
         <CardTitle className="text-sm">{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <Table>
+      <CardContent className="overflow-x-auto">
+        <Table className="min-w-[300px]">
           <TableHeader>
             <TableRow>
               <TableHead>Date</TableHead>

@@ -106,7 +106,7 @@ export default function Tokens() {
           <CardDescription>Give it a name and optional spending limit.</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleCreate} className="flex gap-2 items-end">
+          <form onSubmit={handleCreate} className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-end">
             <div className="flex-1 space-y-1">
               <label className="text-xs font-medium">Name</label>
               <input
@@ -118,7 +118,7 @@ export default function Tokens() {
                 required
               />
             </div>
-            <div className="w-36 space-y-1">
+            <div className="w-full sm:w-36 space-y-1">
               <label className="text-xs font-medium">Cost Limit ($)</label>
               <input
                 type="number"
@@ -129,7 +129,7 @@ export default function Tokens() {
                 className="w-full px-3 py-2 border rounded-md text-sm bg-background"
               />
             </div>
-            <Button type="submit" disabled={creating || !name.trim()}>
+            <Button type="submit" disabled={creating || !name.trim()} className="shrink-0">
               <Plus className="h-4 w-4 mr-1" />
               Create
             </Button>
@@ -142,8 +142,8 @@ export default function Tokens() {
         <CardHeader>
           <CardTitle className="text-sm">Existing Tokens</CardTitle>
         </CardHeader>
-        <CardContent className="p-0">
-          <Table>
+        <CardContent className="p-0 overflow-x-auto">
+          <Table className="min-w-[500px]">
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>

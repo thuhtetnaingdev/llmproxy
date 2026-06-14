@@ -28,7 +28,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background">
-      <Card className="w-96">
+      <Card className="w-full max-w-sm mx-4">
         <CardHeader className="text-center">
           <Key className="h-8 w-8 mx-auto mb-2" />
           <CardTitle>LLMProxy</CardTitle>
