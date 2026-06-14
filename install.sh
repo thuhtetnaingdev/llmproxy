@@ -44,11 +44,11 @@ tar xzf "/tmp/$TARBALL" -C "$INSTALL_DIR"
 echo "$LATEST" > "$INSTALL_DIR/VERSION"
 rm "/tmp/$TARBALL"
 
-# Install binaries.
+# Install binaries (symlinks so updates pick up automatically).
 sudo mkdir -p "$BIN_DIR"
-sudo cp "$INSTALL_DIR/llmproxy" "$BIN_DIR/llmproxy"
-sudo cp "$INSTALL_DIR/llmproxy-server" "$BIN_DIR/llmproxy-server"
-sudo chmod +x "$BIN_DIR/llmproxy" "$BIN_DIR/llmproxy-server"
+sudo rm -f "$BIN_DIR/llmproxy" "$BIN_DIR/llmproxy-server"
+sudo ln -sf "$INSTALL_DIR/llmproxy" "$BIN_DIR/llmproxy"
+sudo ln -sf "$INSTALL_DIR/llmproxy-server" "$BIN_DIR/llmproxy-server"
 
 echo "→ llmproxy → $BIN_DIR/llmproxy"
 echo "→ llmproxy-server → $BIN_DIR/llmproxy-server"
