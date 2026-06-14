@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-REPO="thuhtetnaingdev/lmproxy"
-INSTALL_DIR="${INSTALL_DIR:-$HOME/.lmproxy}"
+REPO="thuhtetnaingdev/llmproxy"
+INSTALL_DIR="${INSTALL_DIR:-$HOME/.llmproxy}"
 BIN_DIR="${BIN_DIR:-/usr/local/bin}"
 SERVICE="llmproxy"
 
