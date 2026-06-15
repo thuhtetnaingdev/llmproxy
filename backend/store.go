@@ -334,7 +334,7 @@ func (s *Store) ByModel() ([]ModelBreakdown, error) {
 	}
 	defer rows.Close()
 
-	var out []ModelBreakdown
+	out := make([]ModelBreakdown, 0)
 	for rows.Next() {
 		var m ModelBreakdown
 		if err := rows.Scan(&m.Model, &m.Requests,
@@ -442,7 +442,7 @@ func fillMonthGaps(points []DailyPoint) []DailyPoint {
 		byDate[p.Date] = p
 	}
 
-	var out []DailyPoint
+	out := make([]DailyPoint, 0)
 	for d := firstOfMonth; !d.After(lastOfMonth); d = d.AddDate(0, 0, 1) {
 		dateStr := d.Format("2006-01-02")
 		if p, ok := byDate[dateStr]; ok {
@@ -548,7 +548,7 @@ func (s *Store) RecentPaginated(page, perPage int) ([]RequestRecord, int, error)
 	}
 	defer rows.Close()
 
-	var out []RequestRecord
+	out := make([]RequestRecord, 0)
 	for rows.Next() {
 		var r RequestRecord
 		var ts string
@@ -618,7 +618,7 @@ func (s *Store) ListAPITokens(userID int64) ([]APIToken, error) {
 		return nil, err
 	}
 	defer rows.Close()
-	var out []APIToken
+	out := make([]APIToken, 0)
 	for rows.Next() {
 		var t APIToken
 		if err := rows.Scan(&t.ID, &t.UserID, &t.Name, &t.Prefix, &t.CostLimitCents, &t.CreatedAt); err != nil {
@@ -657,7 +657,7 @@ func (s *Store) ListAllPricing() ([]PricingRow, error) {
 		return nil, err
 	}
 	defer rows.Close()
-	var out []PricingRow
+	out := make([]PricingRow, 0)
 	for rows.Next() {
 		var r PricingRow
 		if err := rows.Scan(&r.Model, &r.InputPerMillion, &r.OutputPerMillion, &r.CacheHitPerMillion); err != nil {
@@ -788,7 +788,7 @@ func (s *Store) TetrisData(budget int) (TetrisResponse, error) {
 	}
 	defer rows.Close()
 
-	var pieces []TetrisPiece
+	pieces := make([]TetrisPiece, 0)
 	var todayCostCents int
 	for rows.Next() {
 		var ts string
